@@ -12,7 +12,7 @@ def square_matrix(X):
     return len(X) == len(many_col_equal_to_row)
 
 
-def same_matrix(X, Y):
+def same_matrix_size(X, Y):
     if square_matrix(X) and square_matrix(Y):
         if len(X) == len(Y):
             same_col = [1 for i in range(len(X)) and range(len(Y)) if len(X[i]) == len(Y[i])]
@@ -26,5 +26,5 @@ def matrix_addition(X, Y):
     return result
 
 
-print(same_matrix(x, y))
+print(same_matrix_size(x, y))
 print(matrix_addition(x, y))
