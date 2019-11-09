@@ -106,7 +106,7 @@ def same_size_square_matrix(X, Y):
     return False
 
 
-def encrypted(string):
+def encrypted_message(string):
     """
     :param string: A message or text
     :return: A list of number that corresponds to its own character
@@ -120,6 +120,7 @@ def encrypted(string):
     return string_list
 
 
+
 if __name__ == '__main__':
     identity_matrix = np.array(
         [[1, 0, 0],
@@ -127,4 +128,4 @@ if __name__ == '__main__':
          [0, 0, 1],
          [1, 2, 3]])
 
-    print(encrypted("victor"))
+    print(encrypted_message("victor"))
