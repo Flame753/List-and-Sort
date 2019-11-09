@@ -13,6 +13,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="dict.append" />
+          <option value="encrypted_key" />
         </list>
       </option>
     </inspection_tool>

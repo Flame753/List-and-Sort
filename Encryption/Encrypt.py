@@ -3,15 +3,15 @@ import numpy as np
 
 
 class Encrypt:
-    def __init__(self, message, encrypted_key):
+    def __init__(self, message, encrypted_matrix_key=np.array([[1, 0], [0, 1]])):
         """
         :param message: A string or message
-        :param encrypted_key: A key that is in a square matrix form
+        :param encrypted_matrix_key: A key that is in a square matrix form
         """
         self.message = message
-        self.encrypted_key = encrypted_key
-        self.encrypted_message = default_encryption_key()
-        self.matrix_size = matrix_size(default_encryption_key())
+        self.encrypted_matrix_key = encrypted_matrix_key
+        self.encrypted_matrix_message = np.zeros((2, 2))
+        self.encrypted_message = ""
 
     # setter method for message
     def set_message(self, message):
@@ -22,28 +22,28 @@ class Encrypt:
         return self.message
 
     # setter method for encrypted key
-    def set_encrypted_key(self, encrypted_key):
-        self.encrypted_key = encrypted_key
+    def set_encrypted_matrix_key(self, encrypted_matrix_key):
+        self.encrypted_matrix_key = encrypted_matrix_key
 
     # getter method for encrypted key
-    def get_encrypted_code(self):
-        return self.encrypted_key
+    def get_encrypted_matrix_key(self):
+        return self.encrypted_matrix_key
+
+    # setter method for encrypted matrix message
+    def set_encrypted_matrix_message(self, encrypted_matrix_message):
+        self.encrypted_matrix_message = encrypted_matrix_message
+
+    # getter method for encrypted matrix message
+    def get_encrypted_matrix_message(self):
+        return self.encrypted_matrix_message
+
+    # setter method for encrypted matrix message
+    def Set_encrypted_message(self, encrypted_message):
+        self.encrypted_message = encrypted_message
 
     # getter method for encrypt message
     def get_encrypted_message(self):
         return self.encrypted_message
-
-    # getter method of the matrix size
-    def get_matrix_size(self):
-        return self.matrix_size
-
-
-def default_encryption_key():
-    """
-    :return: 2x2 identity matrix
-    """
-    return np.array([[1, 0],
-                     [0, 1]])
 
 
 def char_to_num():
@@ -106,23 +106,25 @@ def same_size_square_matrix(X, Y):
     return False
 
 
-def separator(string):
-    return list(string)
+def encrypted(string):
+    """
+    :param string: A message or text
+    :return: A list of number that corresponds to its own character
+    """
+    string_list = list(string)
+    in_coded = char_to_num()
+    count = 0
+    for i, in string_list:
+        string_list[count] = in_coded[i]
+        count = count + 1
+    return string_list
 
 
-def incoding(string):
-    lis = list(string)
-    length = math.floor(len(lis) / 9) + len(lis) % 9
-    return
+if __name__ == '__main__':
+    identity_matrix = np.array(
+        [[1, 0, 0],
+         [0, 1, 0],
+         [0, 0, 1],
+         [1, 2, 3]])
 
-
-incoding("timeline and smell")
-identity_matrix = np.array(
-    [[1, 0, 0],
-     [0, 1, 0],
-     [0, 0, 1],
-     [1, 2, 3]])
-
-
-print(num_of_col(default_encryption_key()))
-print(matrix_size(identity_matrix))
+    print(encrypted("victor"))
