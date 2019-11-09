@@ -14,39 +14,39 @@ class Encrypt:
         self.encrypted_message = ""
 
     # setter method for message
-    def set_message(self, message):
+    def setMessage(self, message):
         self.message = message
 
     # getter method for message
-    def get_message(self):
+    def getMessage(self):
         return self.message
 
     # setter method for encrypted key
-    def set_encrypted_matrix_key(self, encrypted_matrix_key):
+    def setEncryptedMatrixKey(self, encrypted_matrix_key):
         self.encrypted_matrix_key = encrypted_matrix_key
 
     # getter method for encrypted key
-    def get_encrypted_matrix_key(self):
+    def getEncryptedMatrixKey(self):
         return self.encrypted_matrix_key
 
     # setter method for encrypted matrix message
-    def set_encrypted_matrix_message(self, encrypted_matrix_message):
+    def setEncryptedMatrixMessage(self, encrypted_matrix_message):
         self.encrypted_matrix_message = encrypted_matrix_message
 
     # getter method for encrypted matrix message
-    def get_encrypted_matrix_message(self):
+    def getEncryptedMatrixMessage(self):
         return self.encrypted_matrix_message
 
     # setter method for encrypted matrix message
-    def Set_encrypted_message(self, encrypted_message):
+    def SetEncryptedMessage(self, encrypted_message):
         self.encrypted_message = encrypted_message
 
     # getter method for encrypt message
-    def get_encrypted_message(self):
+    def getEncryptedMessage(self):
         return self.encrypted_message
 
 
-def char_to_num():
+def charToNum():
     """
     :return: List of numbers that correspond to the letters in a string
     """
@@ -59,7 +59,7 @@ def char_to_num():
     return encrypted
 
 
-def num_of_row(X):
+def numOfRow(X):
     """
     :param X: A mxn matrix
     :return: Length of the rows
@@ -67,7 +67,7 @@ def num_of_row(X):
     return len(X)
 
 
-def num_of_col(X):
+def numOfCol(X):
     """
     :param X: A mxn matrix
     :return: Length of the columns
@@ -75,15 +75,15 @@ def num_of_col(X):
     return len(X[0])
 
 
-def matrix_size(X):
+def matrixSize(X):
     """
     :param X: A mxn matrix
     :return: size of matrix [row, col]
     """
-    return [num_of_row(X), num_of_col(X)]
+    return [numOfRow(X), numOfCol(X)]
 
 
-def square_matrix(X):
+def squareMatrix(X):
     """
     :param X: A nxn matrix
     :return: True if the matrix is square (nxn) or False if its not square (mxn)
@@ -92,13 +92,13 @@ def square_matrix(X):
     return len(X) == len(many_col_equal_to_row)
 
 
-def same_size_square_matrix(X, Y):
+def sameSizeSquareMatrix(X, Y):
     """
     :param X: A nxn matrix
     :param Y: Another nxn matrix
     :return: True if both matrix has the same size or False if not same size
     """
-    if square_matrix(X) and square_matrix(Y):
+    if squareMatrix(X) and squareMatrix(Y):
         if len(X) == len(Y):
             same_col = [1 for i in range(len(X)) and range(len(Y)) if len(X[i]) == len(Y[i])]
             return len(X) == len(same_col)
@@ -106,13 +106,13 @@ def same_size_square_matrix(X, Y):
     return False
 
 
-def encrypted_message(string):
+def encryptedMessage(string):
     """
     :param string: A message or text
     :return: A list of number that corresponds to its own character
     """
     string_list = list(string)
-    in_coded = char_to_num()
+    in_coded = charToNum()
     count = 0
     for i, in string_list:
         string_list[count] = in_coded[i]
@@ -120,12 +120,23 @@ def encrypted_message(string):
     return string_list
 
 
+# Not Done
+def listToSquareMatrix(lis, size):
+    size_of_list = len(lis)
+    num_of_element = size[0] * size[1]
+    print(num_of_element)
+    print(size_of_list)
+
+    return np.array(lis).reshape(size[0], size[1])
+
+def twoByTwoInvertibleMatrix():
+    pass
 
 if __name__ == '__main__':
     identity_matrix = np.array(
         [[1, 0, 0],
          [0, 1, 0],
-         [0, 0, 1],
-         [1, 2, 3]])
+         [0, 0, 1]])
 
-    print(encrypted_message("victor"))
+    print(encryptedMessage("victor"))
+    # print(list_to_squareMatrix(list("Hello World"), [2, 4]))
