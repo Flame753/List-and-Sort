@@ -50,7 +50,7 @@ def charToNum():
     """
     :return: List of numbers that correspond to the letters in a string
     """
-    string = 'abcdefghijklmnopqrstuvswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ .!?@$'
+    string = ' abcdefghijklmnopqrstuvswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?@$'
     encrypted = dict()
     count = 0
     for i in string:
@@ -121,16 +121,32 @@ def encryptedMessage(string):
 
 
 # Not Done
-def listToSquareMatrix(lis, size):
-    size_of_list = len(lis)
-    num_of_element = size[0] * size[1]
-    print(num_of_element)
-    print(size_of_list)
+def listToMatrix(lis, size):
+    new_lis = encryptedMessage(lis)
+    a = 0
+    b = 0
+    array = np.zeros((math.ceil(len(lis)/size), size))
+    for i in new_lis:
+        print(array)
+        array[a][b] = i
+        b = b + 1
+        if (b % size) == 0:
+            b = 0
+            a = a + 1
+    return array
 
-    return np.array(lis).reshape(size[0], size[1])
 
-def twoByTwoInvertibleMatrix():
-    pass
+# Not finished
+def twoByTwoInvertibleMatrix(matrix):
+    copy = matrix.copy()
+    det = (matrix[0][0] * matrix[1][1] - (matrix[0][1] * matrix[1][0]))
+    print(det)
+    matrix[0][0] = copy[1][1]
+    matrix[0][1] = -copy[0][1]
+    matrix[1][0] = -copy[1][0]
+    matrix[1][1] = copy[0][0]
+    return 1 / det * matrix
+
 
 if __name__ == '__main__':
     identity_matrix = np.array(
@@ -138,5 +154,8 @@ if __name__ == '__main__':
          [0, 1, 0],
          [0, 0, 1]])
 
-    print(encryptedMessage("victor"))
-    # print(list_to_squareMatrix(list("Hello World"), [2, 4]))
+    # matrix2 = np.array([[3, 2], [-2, 1]])
+    # print(twoByTwoInvertibleMatrix(matrix2))
+    # print(encryptedMessage("jacob"))
+    print(listToMatrix(list("Hello World"), 4))
+    # print(len(charToNum()))
