@@ -127,7 +127,6 @@ def listToMatrix(lis, size):
     b = 0
     array = np.zeros((math.ceil(len(lis)/size), size))
     for i in new_lis:
-        print(array)
         array[a][b] = i
         b = b + 1
         if (b % size) == 0:
