@@ -50,11 +50,24 @@ def charToNum():
     """
     :return: List of numbers that correspond to the letters in a string
     """
-    string = ' abcdefghijklmnopqrstuvswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?@$'
+    key = ' abcdefghijklmnopqrstuvswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?/@$'
     encrypted = dict()
     count = 0
-    for i in string:
+    for i in key:
         encrypted[i] = count
+        count = count + 1
+    return encrypted
+
+
+def numToChar():
+    """
+    :return: List of characters form a string that correspond to a number
+    """
+    key = ' abcdefghijklmnopqrstuvswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!?/@$'
+    encrypted = dict()
+    count = 0
+    for i in key:
+        encrypted[count] = i
         count = count + 1
     return encrypted
 
@@ -77,10 +90,11 @@ def numOfCol(X):
 
 def matrixSize(X):
     """
+    This method is the same as doing "matrix.shape"
     :param X: A mxn matrix
     :return: size of matrix [row, col]
     """
-    return [numOfRow(X), numOfCol(X)]
+    return numOfRow(X), numOfCol(X)
 
 
 def squareMatrix(X):
@@ -106,26 +120,45 @@ def sameSizeSquareMatrix(X, Y):
     return False
 
 
-def encryptedMessage(string):
+def encodedMessage(string):
     """
     :param string: A message or text
     :return: A list of number that corresponds to its own character
     """
     string_list = list(string)
-    in_coded = charToNum()
+    key = charToNum()
     count = 0
-    for i, in string_list:
-        string_list[count] = in_coded[i]
+    for i in string_list:
+        string_list[count] = key[i]
         count = count + 1
     return string_list
 
 
-# Not Done
+def undoEncodedMessage(num_lis):
+    """
+    :param num_lis: A list of number
+    :return: A string of characters that corresponds to its own number
+    """
+    char_list = [" "]*len(num_lis)
+    key = numToChar()
+    count = 0
+    for i in num_lis:
+        char_list[count] = key[i]
+        count = count + 1
+    return "".join(char_list)
+
+
+# This might have to be redo because how I decide how to do the matrix mult
 def listToMatrix(lis, size):
-    new_lis = encryptedMessage(lis)
+    """
+    :param lis: List of character that represents a message
+    :param size: represent the size of the encrypted key's columns
+    :return: A matrix that contains your message in terms of numbers
+    """
+    new_lis = encodedMessage(lis)
     a = 0
     b = 0
-    array = np.zeros((math.ceil(len(lis)/size), size))
+    array = np.zeros((math.ceil(len(lis) / size), size))
     for i in new_lis:
         array[a][b] = i
         b = b + 1
@@ -133,6 +166,14 @@ def listToMatrix(lis, size):
             b = 0
             a = a + 1
     return array
+
+
+def encodedMatrix(key, messageMatrix):
+    pass
+
+
+def undoEncryptedMessage():
+    pass
 
 
 # Not finished
@@ -155,6 +196,10 @@ if __name__ == '__main__':
 
     # matrix2 = np.array([[3, 2], [-2, 1]])
     # print(twoByTwoInvertibleMatrix(matrix2))
-    # print(encryptedMessage("jacob"))
-    print(listToMatrix(list("Hello World"), 4))
+    # print(encodedMessage("jacob"))
+    print(listToMatrix(list("Sergey"), 2))
     # print(len(charToNum()))
+    # print(matrixSize(matrix2))
+    # print(matrix2.shape)
+    print(undoEncodedMessage([2, 3, 4, 0, 1, 0, 28, 53]))
+    print(encodedMessage(undoEncodedMessage([2, 3, 4, 0, 1, 0, 28, 53])))
