@@ -168,7 +168,7 @@ def listToMatrix(lis, size):
     return array
 
 
-def encodedMatrix(key, messageMatrix):
+def keyMatrixMultipyMessage(key, messageMatrix):
     pass
 
 
