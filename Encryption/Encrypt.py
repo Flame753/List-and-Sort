@@ -169,11 +169,22 @@ def listToMatrix(lis, size):
 
 
 def keyMatrixMultipyMessage(key, messageMatrix):
+    """
+    :param key: A matrix that is used to encode the message
+    :param messageMatrix: A matrix that contains numbers instead of characters
+    :return: A list of matrix
+    """
     pass
+    return
 
 
-def undoEncryptedMessage():
-    pass
+def undoEncryptedMessage(invertible_key, encrypted_message):
+    """
+    :param invertible_key: A matrix that contains an invertible matrix
+    :param encrypted_message: A matrix with an encrypted message with numbers
+    :return: A new matrix that contains number that is unencrypted
+    """
+    return invertible_key.dot(encrypted_message)
 
 
 # Not finished
