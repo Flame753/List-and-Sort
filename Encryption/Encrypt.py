@@ -72,6 +72,7 @@ def numToChar():
     return encrypted
 
 
+# probably not need
 def numOfRow(X):
     """
     :param X: A mxn matrix
@@ -80,6 +81,7 @@ def numOfRow(X):
     return len(X)
 
 
+# probably not need
 def numOfCol(X):
     """
     :param X: A mxn matrix
@@ -88,6 +90,7 @@ def numOfCol(X):
     return len(X[0])
 
 
+# probably not need
 def matrixSize(X):
     """
     This method is the same as doing "matrix.shape"
@@ -97,6 +100,7 @@ def matrixSize(X):
     return numOfRow(X), numOfCol(X)
 
 
+# probably not need
 def squareMatrix(X):
     """
     :param X: A nxn matrix
@@ -106,6 +110,7 @@ def squareMatrix(X):
     return len(X) == len(many_col_equal_to_row)
 
 
+# probably not need
 def sameSizeSquareMatrix(X, Y):
     """
     :param X: A nxn matrix
@@ -139,7 +144,7 @@ def undoEncodedMessage(num_lis):
     :param num_lis: A list of number
     :return: A string of characters that corresponds to its own number
     """
-    char_list = [" "]*len(num_lis)
+    char_list = [" "] * len(num_lis)
     key = numToChar()
     count = 0
     for i in num_lis:
@@ -168,6 +173,7 @@ def listToMatrix(lis, size):
     return array
 
 
+# probably not need
 def keyMatrixMultipyMessage(key, messageMatrix):
     """
     :param key: A matrix that is used to encode the message
@@ -178,6 +184,7 @@ def keyMatrixMultipyMessage(key, messageMatrix):
     return
 
 
+# probably not need
 def undoEncryptedMessage(invertible_key, encrypted_message):
     """
     :param invertible_key: A matrix that contains an invertible matrix
